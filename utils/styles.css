@@ -1,0 +1,84 @@
+
+.metric-card {
+    background-color: #f3f4f6;  /* gris clair */
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: left;
+    transition: transform 0.7s;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    
+}
+
+.metric-card-green { background-color: #246d15; color: white; }
+.metric-card-blue { background-color: #156f61; color: white; }
+.metric-card-yellow { background-color: #0f8f7c; color: white; }
+.metric-card-red { background-color: #13ae97; color: white; }
+
+.metric-title {
+    font-size: 17px;
+    font-weight: 450;
+    margin-bottom: 10px;
+}
+
+.metric-value {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+/**
+.metric-delta {
+    font-size: 14px;
+    color: #d1d5db;
+}
+
+.delta-up { color: #10b981; font-weight: 600; }
+.delta-down { color: #ef4444; font-weight: 600; }
+
+**/
+ /* Style pour les cartes de métriques */
+    [data-testid="stMetric"] {
+        background-color: #f0f8f7;
+        border-radius: 10px;
+        padding: 15px;
+        border-left: 5px solid #246d15;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s;
+    }
+    /* Effet au survol : fond vert et élévation */
+    [data-testid="stMetric"]:hover {
+        transform: translateY(-5px);
+        box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+        background-color: #246d15 !important;
+        color: white !important;
+    }
+
+    /* Forcer le texte en blanc au survol pour tous les éléments internes */
+    [data-testid="stMetric"]:hover [data-testid="stMetricLabel"],
+    [data-testid="stMetric"]:hover [data-testid="stMetricValue"],
+    [data-testid="stMetric"]:hover [data-testid="stMetricDelta"] div {
+        color: white !important;
+    }
+    
+    /* Optionnel : changer la couleur de la petite flèche delta en blanc aussi */
+    [data-testid="stMetric"]:hover svg {
+    fill: white !important;
+    }
+
+    /* Cibler le bouton de soumission du formulaire */
+div.stButton > button:first-child, .stFormSubmitButton > button {
+    background-color: #28a745; /* Vert */
+    color: white;
+    border: none;
+}
+
+/* Effet au survol (hover) */
+div.stButton > button:first-child:hover, .stFormSubmitButton > button:hover {
+    background-color: #218838; /* Vert plus foncé */
+    color: white;
+    border: none;
+}
