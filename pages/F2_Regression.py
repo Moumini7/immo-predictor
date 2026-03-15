@@ -67,12 +67,9 @@ col1, col2, col3, col4, col5, col6 = st.columns(6)
 col1.metric("DT – MAE",  f"{results['Decision Tree']['MAE']:,.0f} $")
 col2.metric("DT – RMSE", f"{results['Decision Tree']['RMSE']:,.0f} $")
 col3.metric("DT – R²",   f"{results['Decision Tree']['R2']:.4f}")
-col4.metric("RF – MAE",  f"{results['Random Forest']['MAE']:,.0f} $",
-            delta=f"{results['Decision Tree']['MAE'] - results['Random Forest']['MAE']:,.0f} $")
-col5.metric("RF – RMSE", f"{results['Random Forest']['RMSE']:,.0f} $",
-            delta=f"{results['Decision Tree']['RMSE'] - results['Random Forest']['RMSE']:,.0f} $")
-col6.metric("RF – R²",   f"{results['Random Forest']['R2']:.4f}",
-            delta=f"{results['Random Forest']['R2'] - results['Decision Tree']['R2']:.4f}")
+col4.metric("RF – MAE",  f"{results['Random Forest']['MAE']:,.0f} $")
+col5.metric("RF – RMSE", f"{results['Random Forest']['RMSE']:,.0f} $")
+col6.metric("RF – R²",   f"{results['Random Forest']['R2']:.4f}")
 
 st.caption("Le **Random Forest** donne en général de meilleures performances grâce à l'agrégation de plusieurs arbres.")
 
