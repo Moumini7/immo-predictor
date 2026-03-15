@@ -79,10 +79,8 @@ st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("SVM – Accuracy", f"{results['SVM']['Accuracy']*100:.2f}%")
 c2.metric("SVM – F1",       f"{results['SVM']['F1']:.4f}")
-c3.metric("RF – Accuracy",  f"{results['Random Forest']['Accuracy']*100:.2f}%",
-          delta=f"{(results['Random Forest']['Accuracy']-results['SVM']['Accuracy'])*100:+.2f}%")
-c4.metric("RF – F1",        f"{results['Random Forest']['F1']:.4f}",
-          delta=f"{results['Random Forest']['F1']-results['SVM']['F1']:+.4f}")
+c3.metric("RF – Accuracy",  f"{results['Random Forest']['Accuracy']*100:.2f}%")
+c4.metric("RF – F1",        f"{results['Random Forest']['F1']:.4f}")
 
 st.divider()
 
@@ -142,9 +140,6 @@ st.markdown(f"""
 | **Accuracy** | % de prédictions correctes sur l'ensemble de test |
 | **F1-Score** | Moyenne harmonique précision/rappel – robuste aux classes déséquilibrées |
 | **Matrice de confusion** | Détail des vrais/faux positifs et négatifs par classe |
-
-> **Attention** : Le dataset est déséquilibré (1Fam très majoritaire).
-> Le F1-score weighted est donc plus représentatif que la simple Accuracy.
 
 **Meilleur modèle** : **{best}** avec Accuracy = {results[best]['Accuracy']*100:.2f}%
 """)
