@@ -78,7 +78,7 @@ st.divider()
 
 st.subheader("2 Visualisations")
 
-tab1, tab2 = st.tabs(["Prédit vs Réel", "Résidus", "Importance des variables"])
+tab1, tab2 = st.tabs(["Prédit vs Réel", "Résidus")
 
 with tab1:
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
