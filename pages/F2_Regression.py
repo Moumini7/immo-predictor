@@ -77,51 +77,21 @@ st.divider()
 
 
 st.subheader("2 Visualisations")
-
-tab1, tab2, tab3 = st.tabs(["Prédit vs Réel", "Résidus", "Importance des variables"])
-
-with tab1:
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    for i, (name, color) in enumerate([("Decision Tree", "#246d15"), ("Random Forest", "#3f6d15")]):
-        preds = results[name]["preds"]
-        axes[i].scatter(y_test, preds, alpha=0.3, s=12, color=color)
-        mn = min(y_test.min(), preds.min())
-        mx = max(y_test.max(), preds.max())
-        axes[i].plot([mn, mx], [mn, mx], 'k--', lw=1.5, label="Ligne parfaite")
-        axes[i].set_xlabel("Prix réel ($)")
-        axes[i].set_ylabel("Prix prédit ($)")
-        axes[i].set_title(f"{name} – R²={results[name]['R2']:.3f}")
-        axes[i].xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x/1000:.0f}K"))
-        axes[i].yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x/1000:.0f}K"))
-        axes[i].legend()
-    plt.tight_layout()
-    st.pyplot(fig)
-
-with tab2:
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-    for i, (name, color) in enumerate([("Decision Tree", "#246d15"), ("Random Forest", "#3f6d15")]):
-        preds   = results[name]["preds"]
-        residus = y_test.values - preds
-        axes[i].scatter(preds, residus, alpha=0.3, s=12, color=color)
-        axes[i].axhline(0, color='black', lw=1.5, linestyle='--')
-        axes[i].set_xlabel("Prix prédit ($)")
-        axes[i].set_ylabel("Résidu (réel - prédit)")
-        axes[i].set_title(f"Résidus – {name}")
-        axes[i].xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x/1000:.0f}K"))
-    plt.tight_layout()
-    st.pyplot(fig)
-    st.caption("Des résidus bien centrés autour de 0 indiquent un bon modèle.")
-
-with tab3:
-    imp = reg_model.feature_importance()
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.barh(imp["Variable"], imp["Importance"], color="#246d15", alpha=0.85)
-    ax.set_title("Importance des variables – Random Forest Régression", fontsize=13, fontweight='bold')
-    ax.set_xlabel("Importance (Gini)")
-    ax.invert_yaxis()
-    plt.tight_layout()
-    st.pyplot(fig)
-    st.dataframe(imp, use_container_width=True, hide_index=True)
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+for i, (name, color) in enumerate([("Decision Tree", "#246d15"), ("Random Forest", "#3f6d15")]):
+    preds = results[name]["preds"]
+    axes[i].scatter(y_test, preds, alpha=0.3, s=12, color=color)
+    mn = min(y_test.min(), preds.min())
+    mx = max(y_test.max(), preds.max())
+    axes[i].plot([mn, mx], [mn, mx], 'k--', lw=1.5, label="Ligne parfaite")
+    axes[i].set_xlabel("Prix réel ($)")
+    axes[i].set_ylabel("Prix prédit ($)")
+    axes[i].set_title(f"{name} – R²={results[name]['R2']:.3f}")
+    axes[i].xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x/1000:.0f}K"))
+    axes[i].yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x/1000:.0f}K"))
+    axes[i].legend()
+plt.tight_layout()
+st.pyplot(fig)
 
 st.divider()
 
