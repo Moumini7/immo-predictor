@@ -86,7 +86,7 @@ st.divider()
 
 st.subheader("2 Visualisations")
 
-tab1, tab2, tab3 = st.tabs(["Matrices de confusion", "Rapport de classification", "Importance des variables"])
+tab1, tab2 = st.tabs(["Matrices de confusion", "Rapport de classification"])
 
 with tab1:
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
@@ -118,16 +118,6 @@ with tab2:
         report_df = report_df[["precision", "recall", "f1-score", "support"]].round(3)
         report_df.columns = ["Précision", "Rappel", "F1-Score", "Support"]
         st.dataframe(report_df, use_container_width=True)
-
-with tab3:
-    imp = clf_model.feature_importance()
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(imp["Variable"], imp["Importance"], color="#246d15", alpha=0.85)
-    ax.set_title("Importance des variables – Random Forest Classification", fontsize=13, fontweight='bold')
-    ax.set_xlabel("Importance (Gini)")
-    ax.invert_yaxis()
-    plt.tight_layout()
-    st.pyplot(fig)
 
 st.divider()
 
