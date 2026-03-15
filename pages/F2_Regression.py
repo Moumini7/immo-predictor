@@ -78,7 +78,7 @@ st.divider()
 
 st.subheader("2 Visualisations")
 
-tab1, tab2, tab3 = st.tabs(["Prédit vs Réel", "Résidus", "Importance des variables"])
+tab1, tab2 = st.tabs(["Prédit vs Réel", "Résidus", "Importance des variables"])
 
 with tab1:
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
@@ -111,7 +111,7 @@ with tab2:
     plt.tight_layout()
     st.pyplot(fig)
     st.caption("Des résidus bien centrés autour de 0 indiquent un bon modèle.")
-
+'''
 with tab3:
     imp = reg_model.feature_importance()
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -122,7 +122,7 @@ with tab3:
     plt.tight_layout()
     st.pyplot(fig)
     st.dataframe(imp, use_container_width=True, hide_index=True)
-
+'''
 st.divider()
 
 # ── Interprétation ────────────────────────────────────────────────────────────
